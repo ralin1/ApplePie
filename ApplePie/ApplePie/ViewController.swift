@@ -45,8 +45,9 @@ class ViewController: UIViewController {
         if !listOfWords.isEmpty{
             let newWord = listOfWords.removeFirst()
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMoveAllowed, guessedLetters:[])
+            
             updateUI()
-             //enableLetterButtons(false)
+            enableLetterButtons(true)
         }else{
             enableLetterButtons(false)
         }
@@ -65,7 +66,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
-        //sender.isEnabled = false
+        sender.isEnabled = false
         let letterString = sender.title(for: .normal)!
         let letter = Character(letterString.lowercased())
         currentGame.playerGuessed(letter: letter)
